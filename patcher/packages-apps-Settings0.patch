@@ -1,0 +1,48 @@
+packages/apps/Settingsdiff --git a/src/com/android/settings/cyanogenmod/ButtonBacklightBrightness.java b/src/com/android/settings/cyanogenmod/
+index d915fbfd2..21c8e3ba0 100644
+--- a/src/com/android/settings/cyanogenmod/ButtonBacklightBrightness.java
++++ b/src/com/android/settings/cyanogenmod/ButtonBacklightBrightness.java
+@@ -38,6 +38,7 @@ import android.widget.CheckBox;
+ import android.widget.CompoundButton;
+ import android.widget.SeekBar;
+ import android.widget.TextView;
++import android.os.SystemProperties;
+ 
+ import com.android.settings.R;
+ 
+@@ -269,6 +270,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
+     private void applyTimeout(int timeout) {
+         Settings.System.putInt(mResolver,
+                 Settings.System.BUTTON_BACKLIGHT_TIMEOUT, timeout * 1000);
++        SystemProperties.set("sys.button.timeout", Integer.toString(timeout));
+     }
+ 
+     private void updateBrightnessPreview() {
+(END)
+ # HAL module implemenation, not prelinked and stored in
+@@ -44,3 +45,4 @@ LOCAL_MODULE_TAGS := optional
+ 
+ include $(BUILD_SHARED_LIBRARY)
+ 
++endif
+
+diff --git a/src/com/android/settings/cyanogenmod/ButtonBacklightBrightness.java b/src/com/android/settings/cyanogenmod/ButtonBacklightBrightness.java
+index d915fbfd2..21c8e3ba0 100644
+--- a/src/com/android/settings/cyanogenmod/ButtonBacklightBrightness.java
++++ b/src/com/android/settings/cyanogenmod/ButtonBacklightBrightness.java
+@@ -38,6 +38,7 @@ import android.widget.CheckBox;
+ import android.widget.CompoundButton;
+ import android.widget.SeekBar;
+ import android.widget.TextView;
++import android.os.SystemProperties;
+ 
+ import com.android.settings.R;
+ 
+@@ -269,6 +270,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
+     private void applyTimeout(int timeout) {
+         Settings.System.putInt(mResolver,
+                 Settings.System.BUTTON_BACKLIGHT_TIMEOUT, timeout * 1000);
++        SystemProperties.set("sys.button.timeout", Integer.toString(timeout));
+     }
+ 
+     private void updateBrightnessPreview() {

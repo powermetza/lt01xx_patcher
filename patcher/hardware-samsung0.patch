@@ -1,0 +1,17 @@
+diff --git a/exynos4/exynos4x12/liblights/Android.mk b/exynos4/exynos4x12/liblights/Android.mk
+index 5392476..eafc244 100644
+--- a/exynos4/exynos4x12/liblights/Android.mk
++++ b/exynos4/exynos4x12/liblights/Android.mk
+@@ -12,6 +12,7 @@
+ # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
++ifeq ($(filter lt01wifi lt013g lt01lte,$(TARGET_DEVICE)),)
+ 
+ LOCAL_PATH:= $(call my-dir)
+ # HAL module implemenation, not prelinked and stored in
+@@ -44,3 +45,4 @@ LOCAL_MODULE_TAGS := optional
+ 
+ include $(BUILD_SHARED_LIBRARY)
+ 
++endif
